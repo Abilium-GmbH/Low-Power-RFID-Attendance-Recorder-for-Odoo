@@ -36,7 +36,7 @@ sudo pip3 install RPi.GPIO
 3. Run example
 ```console
 cd e-Paper/RaspberryPi_JetsonNano/python/examples/
-python epd_2in7_test.py
+python epd_2in7b_test.py
 ```
 ## Test RFID
 1. Install the library
