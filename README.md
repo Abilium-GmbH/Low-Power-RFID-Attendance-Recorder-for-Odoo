@@ -166,8 +166,8 @@ python rfid_read.py
 5. Hold an RFID tag to the reader and see it's ID
 
 ## References
-WaveShare 2.7Inch e-Paper Display Wiki https://www.waveshare.com/wiki/2.7inch_e-Paper_HAT_(B)
-MFRC522 library https://github.com/pimylifeup/MFRC522-python
-MFRC522 datasheet https://www.nxp.com/docs/en/data-sheet/MFRC522.pdf
-Raspberry PI 4 Pinout https://maker.pro/storage/g9KLAxU/g9KLAxUiJb9e4Zp1xcxrMhbCDyc3QWPdSunYAoew.png
-RFC522 Board Tutorial https://pimylifeup.com/raspberry-pi-rfid-rc522/
+- WaveShare 2.7Inch e-Paper Display Wiki https://www.waveshare.com/wiki/2.7inch_e-Paper_HAT_(B)
+- MFRC522 library https://github.com/pimylifeup/MFRC522-python
+- MFRC522 datasheet https://www.nxp.com/docs/en/data-sheet/MFRC522.pdf
+- Raspberry PI 4 Pinout https://maker.pro/storage/g9KLAxU/g9KLAxUiJb9e4Zp1xcxrMhbCDyc3QWPdSunYAoew.png
+- RFC522 Board Tutorial https://pimylifeup.com/raspberry-pi-rfid-rc522/
