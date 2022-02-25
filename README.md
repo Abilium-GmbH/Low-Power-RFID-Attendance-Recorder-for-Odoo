@@ -39,3 +39,32 @@ cd e-Paper/RaspberryPi_JetsonNano/python/examples/
 python epd_2in7_test.py
 ```
 ## Test RFID
+1. Install the library
+```console
+sudo pip3 install mfrc522
+```
+2. Create an example file
+```console
+cd ~/pi-rfid
+sudo nano rfid_read.py
+```
+3. Insert the following code
+```python
+#!/usr/bin/env python
+
+import RPi.GPIO as GPIO
+from mfrc522 import SimpleMFRC522
+
+reader = SimpleMFRC522()
+
+try:
+  id, text = reader.read()
+  print(id)
+  print(text)
+finally:
+  GPIO.cleanup()
+```
+4. Save the file and run it:
+```console
+python rfid_read.py
+```
