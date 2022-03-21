@@ -13,10 +13,13 @@ def main():
     uid = common.authenticate(db, username, password, {})
     models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
 
-    time = datetime.now()
+    time = datetime.utcnow()
     time=  time.strftime("%Y-%m-%d %H:%M:%S")
     print(time)
-    unformated = models.execute_kw(db, uid, password, 'hr.attendance', 'create', [{'check_out': str(time)}] )
+    id = models.execute_kw(db, uid, password, 'hr.attendance', 'search_read', [[]], {'fields':['id'], 'limit':1} )
+    id = id [0]["id"]
+    
+    unformated = models.execute_kw(db, uid, password, 'hr.attendance', 'write', [[id],{'check_out': str(time)}] )
     result = json.dumps(unformated,indent = 4)
     print(result)
 
