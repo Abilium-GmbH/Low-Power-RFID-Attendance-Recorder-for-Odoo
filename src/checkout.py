@@ -9,10 +9,10 @@ def main():
     db = environ['ODOO_DB']
     username = environ['ODOO_USERNAME'] 
     password= environ['ODOO_PASSWORD'] 
-    common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
+    common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url), allow_none=True)
     uid = common.authenticate(db, username, password, {})
-    models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
-
+    models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url), allow_none=True)
+    print('{}/xmlrpc/2/common'.format(url))
     time = datetime.utcnow()
     time=  time.strftime("%Y-%m-%d %H:%M:%S")
     print(time)

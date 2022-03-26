@@ -16,7 +16,7 @@ epd = epd2in7.EPD()
 
 
 try:
-  epd.init() 
+  epd.init()
   while(True):
     epd.Clear(0xFF)
     font18 = ImageFont.truetype('Font.ttc', 18)
