@@ -1,11 +1,6 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-import sys
-import os
 import RPi.GPIO as GPIO
-# libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
-# if os.path.exists(libdir):
-#     sys.path.append(libdir)
 from lib.simplemfrc import SimpleMFRC522
 from lib.waveshare_epd import epd2in7
 import time
@@ -13,7 +8,9 @@ from PIL import Image,ImageDraw,ImageFont
 from datetime import datetime
 import xmlrpc.client
 import json
-from os import environ
+from os import environ,path
+
+resources = path.join(path.dirname(__file__),"resources")
 
 
 epd = epd2in7.EPD()
@@ -31,8 +28,8 @@ try:
   while(True):
     # codeblock establishes the default drawing on the e-paper
     #epd.Clear(0xFF)
-    font18 = ImageFont.truetype('resources/Font.ttc', 18) 
-    Himage = Image.open('resources/abilium.bmp')
+    font18 = ImageFont.truetype(path.join(resources,"Font.ttc"), 18) 
+    Himage = Image.open(path.join(resources,"abilium.bmp"))
     #Himage = Image.new('1', (epd.height, epd.width), 255)
     draw = ImageDraw.Draw(Himage)
     draw.text((epd.height/2-90, epd.width/2-70), 'Bitte Karte einfuehren.', font = font18, fill = 0)
@@ -84,5 +81,5 @@ try:
     time.sleep(5)
 
 except KeyboardInterrupt:
-    epd2in7.epdconfig.module_exit()
+    # epd2in7.epdconfig.module_exit()
     exit()
