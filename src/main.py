@@ -3,11 +3,11 @@
 import sys
 import os
 import RPi.GPIO as GPIO
-libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
-if os.path.exists(libdir):
-    sys.path.append(libdir)
-from simplemfrc import SimpleMFRC522
-from waveshare_epd import epd2in7
+# libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
+# if os.path.exists(libdir):
+#     sys.path.append(libdir)
+from lib.simplemfrc import SimpleMFRC522
+from lib.waveshare_epd import epd2in7
 import time
 from PIL import Image,ImageDraw,ImageFont
 from datetime import datetime
@@ -31,8 +31,8 @@ try:
   while(True):
     # codeblock establishes the default drawing on the e-paper
     #epd.Clear(0xFF)
-    font18 = ImageFont.truetype('Font.ttc', 18) 
-    Himage = Image.open('abilium.bmp')
+    font18 = ImageFont.truetype('resources/Font.ttc', 18) 
+    Himage = Image.open('resources/abilium.bmp')
     #Himage = Image.new('1', (epd.height, epd.width), 255)
     draw = ImageDraw.Draw(Himage)
     draw.text((epd.height/2-90, epd.width/2-70), 'Bitte Karte einfuehren.', font = font18, fill = 0)
