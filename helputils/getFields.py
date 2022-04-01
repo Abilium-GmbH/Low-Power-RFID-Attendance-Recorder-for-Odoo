@@ -10,7 +10,7 @@ def main():
     uid = common.authenticate(db, username, password, {})
     models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
 
-    unformated = models.execute_kw(db, uid, password, 'hr.attendance', 'fields_get', [], )
+    unformated = models.execute_kw(db, uid, password, 'hr.employee', 'fields_get', [], )
     result = json.dumps(unformated,indent = 4)
     print(result)
 
