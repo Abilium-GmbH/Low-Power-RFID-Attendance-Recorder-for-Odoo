@@ -1,7 +1,6 @@
 from os import environ
 def main():
     import xmlrpc.client
-    import json
     url = environ['ODOO_URL']
     db = environ['ODOO_DB']
     username = environ['ODOO_USERNAME'] 
@@ -11,9 +10,11 @@ def main():
     models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
 
     # change the model field to whatever you want to know about
-    unformated = models.execute_kw(db, uid, password, 'hr.attendance', 'fields_get', [], )
-    result = json.dumps(unformated,indent = 4)
-    print(result)
+    unformated = models.execute_kw(db, uid, password, 'hr.attendance', 'fields_get', [], ).keys()
+    print(type(unformated))
 
+    for i in unformated:
+        print(i)
+    
 if __name__ == "__main__":
     main()
