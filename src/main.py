@@ -35,26 +35,37 @@ try:
     id, text = reader.read()
 
     odoo_handler = Interpreter()
-    employee = odoo_handler.getEmployee(id)
-
-    if employee.isCheckedOut:
-        odoo_handler.check_in(employee)
-
+    try:
+        employee = odoo_handler.getEmployee(id)
+        employee_found = True
+    except ValueError:
+        employee_found = False
         # draw check-in image
         epd.init()
         Himage = Image.new('1', (epd.height, epd.width), 255)
         draw = ImageDraw.Draw(Himage)
-        draw.text((epd.height/2-70, epd.width/2-15), 'Hallo    ' + employee.name, font = font18, fill = 0)
+        draw.text((epd.height/2-70, epd.width/2-15), 'Wie bitte?' , font = font18, fill = 0)
         epd.display(epd.getbuffer(Himage))
-    else:
-        odoo_handler.check_out(employee)
 
-        # draw check-out image
-        epd.init()
-        Himage = Image.new('1', (epd.height, epd.width), 255)
-        draw = ImageDraw.Draw(Himage)
-        draw.text((epd.height/2-70, epd.width/2-15), 'Tschuess ' + employee.name, font = font18, fill = 0)
-        epd.display(epd.getbuffer(Himage))
+    if employee_found:
+        if employee.isCheckedOut :
+            odoo_handler.check_in(employee)
+
+            # draw check-in image
+            epd.init()
+            Himage = Image.new('1', (epd.height, epd.width), 255)
+            draw = ImageDraw.Draw(Himage)
+            draw.text((epd.height/2-70, epd.width/2-15), 'Hallo    ' + employee.name, font = font18, fill = 0)
+            epd.display(epd.getbuffer(Himage))
+        if not employee.isCheckedOut:
+            odoo_handler.check_out(employee)
+
+            # draw check-out image
+            epd.init()
+            Himage = Image.new('1', (epd.height, epd.width), 255)
+            draw = ImageDraw.Draw(Himage)
+            draw.text((epd.height/2-70, epd.width/2-15), 'Tschuess ' + employee.name, font = font18, fill = 0)
+            epd.display(epd.getbuffer(Himage))
                 
     time.sleep(5)
 
