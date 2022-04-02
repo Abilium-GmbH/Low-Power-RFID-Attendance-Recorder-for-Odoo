@@ -1,6 +1,6 @@
 import xmlrpc.client
+from .employee import Employee
 from typing import Any 
-from employee import Employee
 from datetime import datetime
 from os import environ
 
