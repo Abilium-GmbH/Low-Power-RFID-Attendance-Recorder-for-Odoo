@@ -33,13 +33,13 @@ class Interpreter():
                                       method_name,
                                       parameters,
                                       extra_parameters)
-
-
-    def getEmployee(self, barcode : str) -> Employee:
+    
+    
+    def getEmployee(self, barcode : int) -> Employee:
         try:
             found_employee = self.execute(self.employeeModule,
                                           'search_read',
-                                          [[['barcode', '=', barcode]]],
+                                          [[['barcode', '=', str(barcode)]]],
                                           {'fields': ['name','attendance_state','last_attendance_id']}
                                           )[0]
         except IndexError:
@@ -49,15 +49,15 @@ class Interpreter():
                         name = found_employee['name'],
                         isCheckedOut = ( found_employee['attendance_state'] == 'checked_out'),
                         last_attendance_id = found_employee['last_attendance_id'][0])
-
+    
     def check_in(self, employee: Employee) -> None:
         self.execute(self.attendanceModule, 'create',
                      [{'employee_id': employee.id, 'check_in': str(self.time())}])
-
+    
     def check_out(self, employee: Employee) -> None:
         try:
             self.execute(self.attendanceModule, 'write',
                      [employee.last_attendance_id, {'check_out': str(self.time())}] )
         except xmlrpc.client.Fault:
             pass
-
+    
