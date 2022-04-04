@@ -1,0 +1,383 @@
+[
+    {
+        "id": 148,
+        "employee_id": [
+            1,
+            "Aeschbacher Alexander"
+        ],
+        "department_id": [
+            1,
+            "Administration"
+        ],
+        "check_in": "2022-04-04 18:07:12",
+        "check_out": false,
+        "worked_hours": 0.0,
+        "__last_update": "2022-04-04 18:07:12",
+        "display_name": "Aeschbacher Alexander from 04/04/2022 20:07:12",
+        "create_uid": [
+            2,
+            "Aeschbacher Alexander"
+        ],
+        "create_date": "2022-04-04 18:07:12",
+        "write_uid": [
+            2,
+            "Aeschbacher Alexander"
+        ],
+        "write_date": "2022-04-04 18:07:12"
+    },
+    {
+        "id": 147,
+        "employee_id": [
+            1,
+            "Aeschbacher Alexander"
+        ],
+        "department_id": [
+            1,
+            "Administration"
+        ],
+        "check_in": "2022-04-04 16:01:42",
+        "check_out": "2022-04-04 16:01:56",
+        "worked_hours": 0.0038888888888888888,
+        "__last_update": "2022-04-04 16:01:56",
+        "display_name": "Aeschbacher Alexander from 04/04/2022 18:01:42 to 04/04/2022 18:01:56",
+        "create_uid": [
+            13,
+            "autorfidcard@informee.ch"
+        ],
+        "create_date": "2022-04-04 16:01:42",
+        "write_uid": [
+            13,
+            "autorfidcard@informee.ch"
+        ],
+        "write_date": "2022-04-04 16:01:56"
+    },
+    {
+        "id": 146,
+        "employee_id": [
+            1,
+            "Aeschbacher Alexander"
+        ],
+        "department_id": [
+            1,
+            "Administration"
+        ],
+        "check_in": "2022-04-03 17:30:47",
+        "check_out": "2022-04-03 17:35:52",
+        "worked_hours": 0.08472222222222223,
+        "__last_update": "2022-04-03 17:35:52",
+        "display_name": "Aeschbacher Alexander from 04/03/2022 19:30:47 to 04/03/2022 19:35:52",
+        "create_uid": [
+            13,
+            "autorfidcard@informee.ch"
+        ],
+        "create_date": "2022-04-03 17:30:47",
+        "write_uid": [
+            13,
+            "autorfidcard@informee.ch"
+        ],
+        "write_date": "2022-04-03 17:35:52"
+    },
+    {
+        "id": 145,
+        "employee_id": [
+            7,
+            "Tuni"
+        ],
+        "department_id": false,
+        "check_in": "2022-04-02 19:52:58",
+        "check_out": "2022-04-02 19:53:12",
+        "worked_hours": 0.0038888888888888888,
+        "__last_update": "2022-04-02 19:53:13",
+        "display_name": "Tuni from 04/02/2022 21:52:58 to 04/02/2022 21:53:12",
+        "create_uid": [
+            8,
+            "tunahanoezsoy@gmail.com"
+        ],
+        "create_date": "2022-04-02 19:52:58",
+        "write_uid": [
+            8,
+            "tunahanoezsoy@gmail.com"
+        ],
+        "write_date": "2022-04-02 19:53:13"
+    },
+    {
+        "id": 144,
+        "employee_id": [
+            1,
+            "Aeschbacher Alexander"
+        ],
+        "department_id": [
+            1,
+            "Administration"
+        ],
+        "check_in": "2022-04-02 17:23:36",
+        "check_out": "2022-04-02 17:23:50",
+        "worked_hours": 0.0038888888888888888,
+        "__last_update": "2022-04-02 17:23:50",
+        "display_name": "Aeschbacher Alexander from 04/02/2022 19:23:36 to 04/02/2022 19:23:50",
+        "create_uid": [
+            13,
+            "autorfidcard@informee.ch"
+        ],
+        "create_date": "2022-04-02 17:23:36",
+        "write_uid": [
+            13,
+            "autorfidcard@informee.ch"
+        ],
+        "write_date": "2022-04-02 17:23:50"
+    },
+    {
+        "id": 143,
+        "employee_id": [
+            1,
+            "Aeschbacher Alexander"
+        ],
+        "department_id": [
+            1,
+            "Administration"
+        ],
+        "check_in": "2022-04-02 17:15:58",
+        "check_out": "2022-04-02 17:16:12",
+        "worked_hours": 0.0038888888888888888,
+        "__last_update": "2022-04-02 17:16:12",
+        "display_name": "Aeschbacher Alexander from 04/02/2022 19:15:58 to 04/02/2022 19:16:12",
+        "create_uid": [
+            13,
+            "autorfidcard@informee.ch"
+        ],
+        "create_date": "2022-04-02 17:15:58",
+        "write_uid": [
+            13,
+            "autorfidcard@informee.ch"
+        ],
+        "write_date": "2022-04-02 17:16:12"
+    },
+    {
+        "id": 142,
+        "employee_id": [
+            1,
+            "Aeschbacher Alexander"
+        ],
+        "department_id": [
+            1,
+            "Administration"
+        ],
+        "check_in": "2022-04-02 16:48:30",
+        "check_out": "2022-04-02 16:48:44",
+        "worked_hours": 0.0038888888888888888,
+        "__last_update": "2022-04-02 16:48:44",
+        "display_name": "Aeschbacher Alexander from 04/02/2022 18:48:30 to 04/02/2022 18:48:44",
+        "create_uid": [
+            13,
+            "autorfidcard@informee.ch"
+        ],
+        "create_date": "2022-04-02 16:48:30",
+        "write_uid": [
+            13,
+            "autorfidcard@informee.ch"
+        ],
+        "write_date": "2022-04-02 16:48:44"
+    },
+    {
+        "id": 141,
+        "employee_id": [
+            7,
+            "Tuni"
+        ],
+        "department_id": false,
+        "check_in": "2022-04-02 13:26:52",
+        "check_out": "2022-04-02 19:52:43",
+        "worked_hours": 6.430833333333333,
+        "__last_update": "2022-04-02 19:52:43",
+        "display_name": "Tuni from 04/02/2022 15:26:52 to 04/02/2022 21:52:43",
+        "create_uid": [
+            8,
+            "tunahanoezsoy@gmail.com"
+        ],
+        "create_date": "2022-04-02 13:26:53",
+        "write_uid": [
+            8,
+            "tunahanoezsoy@gmail.com"
+        ],
+        "write_date": "2022-04-02 19:52:43"
+    },
+    {
+        "id": 140,
+        "employee_id": [
+            1,
+            "Aeschbacher Alexander"
+        ],
+        "department_id": [
+            1,
+            "Administration"
+        ],
+        "check_in": "2022-04-02 13:23:23",
+        "check_out": "2022-04-02 13:23:38",
+        "worked_hours": 0.004166666666666667,
+        "__last_update": "2022-04-02 13:23:38",
+        "display_name": "Aeschbacher Alexander from 04/02/2022 15:23:23 to 04/02/2022 15:23:38",
+        "create_uid": [
+            13,
+            "autorfidcard@informee.ch"
+        ],
+        "create_date": "2022-04-02 13:23:23",
+        "write_uid": [
+            13,
+            "autorfidcard@informee.ch"
+        ],
+        "write_date": "2022-04-02 13:23:38"
+    },
+    {
+        "id": 139,
+        "employee_id": [
+            1,
+            "Aeschbacher Alexander"
+        ],
+        "department_id": [
+            1,
+            "Administration"
+        ],
+        "check_in": "2022-04-02 12:24:48",
+        "check_out": "2022-04-02 12:25:50",
+        "worked_hours": 0.017222222222222222,
+        "__last_update": "2022-04-02 12:25:18",
+        "display_name": "Aeschbacher Alexander from 04/02/2022 14:24:48 to 04/02/2022 14:25:50",
+        "create_uid": [
+            2,
+            "Aeschbacher Alexander"
+        ],
+        "create_date": "2022-04-02 12:24:17",
+        "write_uid": [
+            2,
+            "Aeschbacher Alexander"
+        ],
+        "write_date": "2022-04-02 12:25:18"
+    },
+    {
+        "id": 138,
+        "employee_id": [
+            1,
+            "Aeschbacher Alexander"
+        ],
+        "department_id": [
+            1,
+            "Administration"
+        ],
+        "check_in": "2022-04-02 12:13:09",
+        "check_out": "2022-04-02 12:22:26",
+        "worked_hours": 0.15472222222222223,
+        "__last_update": "2022-04-02 12:21:55",
+        "display_name": "Aeschbacher Alexander from 04/02/2022 14:13:09 to 04/02/2022 14:22:26",
+        "create_uid": [
+            2,
+            "Aeschbacher Alexander"
+        ],
+        "create_date": "2022-04-02 12:12:38",
+        "write_uid": [
+            2,
+            "Aeschbacher Alexander"
+        ],
+        "write_date": "2022-04-02 12:21:55"
+    },
+    {
+        "id": 137,
+        "employee_id": [
+            1,
+            "Aeschbacher Alexander"
+        ],
+        "department_id": [
+            1,
+            "Administration"
+        ],
+        "check_in": "2022-04-02 12:05:36",
+        "check_out": "2022-04-02 12:07:50",
+        "worked_hours": 0.03722222222222222,
+        "__last_update": "2022-04-02 12:07:19",
+        "display_name": "Aeschbacher Alexander from 04/02/2022 14:05:36 to 04/02/2022 14:07:50",
+        "create_uid": [
+            2,
+            "Aeschbacher Alexander"
+        ],
+        "create_date": "2022-04-02 12:05:04",
+        "write_uid": [
+            2,
+            "Aeschbacher Alexander"
+        ],
+        "write_date": "2022-04-02 12:07:19"
+    },
+    {
+        "id": 136,
+        "employee_id": [
+            1,
+            "Aeschbacher Alexander"
+        ],
+        "department_id": [
+            1,
+            "Administration"
+        ],
+        "check_in": "2022-04-02 11:32:47",
+        "check_out": "2022-04-02 12:03:39",
+        "worked_hours": 0.5144444444444445,
+        "__last_update": "2022-04-02 12:03:08",
+        "display_name": "Aeschbacher Alexander from 04/02/2022 13:32:47 to 04/02/2022 14:03:39",
+        "create_uid": [
+            2,
+            "Aeschbacher Alexander"
+        ],
+        "create_date": "2022-04-02 11:32:16",
+        "write_uid": [
+            2,
+            "Aeschbacher Alexander"
+        ],
+        "write_date": "2022-04-02 12:03:08"
+    },
+    {
+        "id": 135,
+        "employee_id": [
+            7,
+            "Tuni"
+        ],
+        "department_id": false,
+        "check_in": "2022-04-02 10:09:41",
+        "check_out": "2022-04-02 10:10:01",
+        "worked_hours": 0.005555555555555556,
+        "__last_update": "2022-04-02 10:10:01",
+        "display_name": "Tuni from 04/02/2022 12:09:41 to 04/02/2022 12:10:01",
+        "create_uid": [
+            8,
+            "tunahanoezsoy@gmail.com"
+        ],
+        "create_date": "2022-04-02 10:09:41",
+        "write_uid": [
+            8,
+            "tunahanoezsoy@gmail.com"
+        ],
+        "write_date": "2022-04-02 10:10:01"
+    },
+    {
+        "id": 134,
+        "employee_id": [
+            1,
+            "Aeschbacher Alexander"
+        ],
+        "department_id": [
+            1,
+            "Administration"
+        ],
+        "check_in": "2022-04-02 08:16:43",
+        "check_out": "2022-04-02 08:16:45",
+        "worked_hours": 0.0005555555555555556,
+        "__last_update": "2022-04-02 08:16:45",
+        "display_name": "Aeschbacher Alexander from 04/02/2022 10:16:43 to 04/02/2022 10:16:45",
+        "create_uid": [
+            2,
+            "Aeschbacher Alexander"
+        ],
+        "create_date": "2022-04-02 08:16:43",
+        "write_uid": [
+            2,
+            "Aeschbacher Alexander"
+        ],
+        "write_date": "2022-04-02 08:16:45"
+    }
+]

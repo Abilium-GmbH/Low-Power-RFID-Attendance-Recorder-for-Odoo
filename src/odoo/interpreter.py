@@ -33,7 +33,18 @@ class Interpreter():
                                       method_name,
                                       parameters,
                                       extra_parameters)
-    
+
+    def monthly_hours(self, attendance_ids: list) -> float:
+        time_query = datetime.now().strftime('%Y-%m-%')
+        unprocessed_attendances = self.execute(self.attendanceModule,
+                                   'search_read',
+                                   [[
+                                        ['id', 'in', attendance_ids], 
+                                        ['write_date','like',time_query]
+                                   ]],
+                                   {'fields':['worked_hours']}
+                                )
+        return sum(attendance['worked_hours'] for attendance in unprocessed_attendances)
     
     def getEmployee(self, barcode : int) -> Employee:
         try:
@@ -43,6 +54,7 @@ class Interpreter():
                                           {'fields': [
                                                 'name'
                                                 ,'attendance_state'
+                                                ,'attendance_ids'
                                                 ,'last_attendance_id'
                                                 ,'hours_today'
                                               ]
@@ -55,7 +67,8 @@ class Interpreter():
                         name= found_employee['name'],
                         isCheckedOut= ( found_employee['attendance_state'] == 'checked_out'),
                         last_attendance_id= found_employee['last_attendance_id'][0],
-                        hours_today= found_employee['hours_today']
+                        hours_today= found_employee['hours_today'],
+                        hours_this_month= self.monthly_hours(found_employee['attendance_ids'])
                         )
     
     def check_in(self, employee: Employee) -> None:

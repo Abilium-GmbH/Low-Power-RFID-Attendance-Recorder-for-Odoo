@@ -11,10 +11,10 @@ def main():
     models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
 
     # change the model field to whatever you want to know about
-    unformated = models.execute_kw(db, uid, password, 'hr.employee', 'fields_get', [], )
+    unformated = models.execute_kw(db, uid, password, 'hr.attendance', 'search_read', [[]], )
     result = json.dumps(unformated,indent = 4)
 
-    f = open("employee_output", "w")
+    f = open("attendance_output.json", "w")
     f.write(result)
     f.close()
     
