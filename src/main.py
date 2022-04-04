@@ -37,17 +37,6 @@ try:
     odoo_handler = Interpreter()
     try:
         employee = odoo_handler.getEmployee(id)
-        employee_found = True
-    except ValueError:
-        employee_found = False
-        # draw check-in image
-        epd.init()
-        Himage = Image.new('1', (epd.height, epd.width), 255)
-        draw = ImageDraw.Draw(Himage)
-        draw.text((epd.height/2-70, epd.width/2-15), 'Wie bitte?' , font = font18, fill = 0)
-        epd.display(epd.getbuffer(Himage))
-
-    if employee_found:
         if employee.isCheckedOut :
             odoo_handler.check_in(employee)
 
@@ -66,6 +55,15 @@ try:
             draw = ImageDraw.Draw(Himage)
             draw.text((epd.height/2-70, epd.width/2-15), 'Tschuess ' + employee.name, font = font18, fill = 0)
             epd.display(epd.getbuffer(Himage))
+
+    except ValueError:
+        # draw unknown image
+        epd.init()
+        Himage = Image.new('1', (epd.height, epd.width), 255)
+        draw = ImageDraw.Draw(Himage)
+        draw.text((epd.height/2-70, epd.width/2-15), 'Wie bitte?' , font = font18, fill = 0)
+        epd.display(epd.getbuffer(Himage))
+
                 
     time.sleep(5)
 
