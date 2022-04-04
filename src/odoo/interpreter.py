@@ -40,15 +40,23 @@ class Interpreter():
             found_employee = self.execute(self.employeeModule,
                                           'search_read',
                                           [[['barcode', '=', str(barcode)]]],
-                                          {'fields': ['name','attendance_state','last_attendance_id']}
+                                          {'fields': [
+                                                'name'
+                                                ,'attendance_state'
+                                                ,'last_attendance_id'
+                                                ,'hours_today'
+                                              ]
+                                            }
                                           )[0]
         except IndexError:
             raise ValueError("Bad Badge-id")
 
-        return Employee(id = found_employee['id'],
-                        name = found_employee['name'],
-                        isCheckedOut = ( found_employee['attendance_state'] == 'checked_out'),
-                        last_attendance_id = found_employee['last_attendance_id'][0])
+        return Employee(id= found_employee['id'],
+                        name= found_employee['name'],
+                        isCheckedOut= ( found_employee['attendance_state'] == 'checked_out'),
+                        last_attendance_id= found_employee['last_attendance_id'][0],
+                        hours_today= found_employee['hours_today']
+                        )
     
     def check_in(self, employee: Employee) -> None:
         self.execute(self.attendanceModule, 'create',

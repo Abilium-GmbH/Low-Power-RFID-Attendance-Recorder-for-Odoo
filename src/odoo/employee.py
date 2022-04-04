@@ -6,3 +6,4 @@ class Employee():
     name: str
     isCheckedOut: bool
     last_attendance_id: str
+    hours_today: str
