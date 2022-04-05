@@ -6,6 +6,7 @@ from lib.waveshare_epd import epd2in7
 import time
 from PIL import Image,ImageDraw,ImageFont
 from datetime import datetime
+from datetime import timedelta
 from odoo.interpreter import Interpreter
 from os import path
 
@@ -54,6 +55,7 @@ try:
             Himage = Image.new('1', (epd.height, epd.width), 255)
             draw = ImageDraw.Draw(Himage)
             draw.text((epd.height/2-70, epd.width/2-15), 'Tschuess ' + employee.name, font = font18, fill = 0)
+            draw.text((epd.height/2-100, epd.width/2+5), 'Arbeitsstunden:' + str(timedelta(hours = employee.hours_this_month)), font = font18, fill = 0)
             epd.display(epd.getbuffer(Himage))
 
     except ValueError:
