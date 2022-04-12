@@ -9,9 +9,14 @@ from datetime import datetime
 from datetime import timedelta
 from odoo.interpreter import Interpreter
 from os import path
+from gpiozero import Button  # import the Button control from gpiozero
+import netifaces as ni  # Importing netifaces to gather network information
 
 resources = path.join(path.dirname(__file__),"resources")
 
+key1 = Button(5)
+key2 = Button(6)
+local_ip = ni.ifaddresses('eth0')[ni.AF_INET][0]['addr']
 
 epd = epd2in7.EPD()
 
@@ -66,7 +71,16 @@ try:
         draw.text((epd.height/2-70, epd.width/2-15), 'Wie bitte?' , font = font18, fill = 0)
         epd.display(epd.getbuffer(Himage))
 
-                
+    #key2.wait_for_press()
+
+    # If you keep the Button 2 pressed after checkin/checkout it will show the IP of the Rasp
+    if key2.is_pressed:
+        epd.init()
+        Himage = Image.new('1', (epd.height, epd.width), 255)
+        draw = ImageDraw.Draw(Himage)
+        draw.text((epd.height / 2 - 70, epd.width / 2 - 15), 'IP: ' + local_ip, font=font18, fill=0)
+        epd.display(epd.getbuffer(Himage))
+
     time.sleep(5)
 
 except KeyboardInterrupt:
