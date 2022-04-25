@@ -13,10 +13,10 @@ class Interpreter():
         return datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
     def __init__(self) -> None:
-        url = environ['ODOO_URL']
-        user = environ['ODOO_USERNAME']
-        self.db = environ['ODOO_DB']
-        self.password = environ['ODOO_PASSWORD']
+        url = 'https://rostmytomato.odoo.com'#environ['ODOO_URL']
+        user = 'autorfidcard@informee.ch'#environ['ODOO_USERNAME']
+        self.db = 'rostmytomato'#environ['ODOO_DB']
+        self.password = 'DVAMavtVhIOIvWfIU66d'#environ['ODOO_PASSWORD']
         self.common = xmlrpc.client.ServerProxy(
             '{}/xmlrpc/2/common'.format(url), allow_none=True)
         self.uid = self.common.authenticate(self.db, user, self.password, {})

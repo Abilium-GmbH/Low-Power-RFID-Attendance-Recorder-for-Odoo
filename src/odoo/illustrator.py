@@ -1,0 +1,47 @@
+from xmlrpc.client import boolean
+from lib.waveshare_epd import epd2in7
+from PIL import Image,ImageDraw,ImageFont
+from os import path
+from datetime import datetime
+
+resources = path.join(path.dirname(__file__), "..", "resources")
+
+epd = epd2in7.EPD()
+
+class Illustrator():
+
+    def __init__(self) -> None:
+        self.font = ImageFont.truetype(path.join(resources,"Font.ttc"), 18) 
+        self.logo = Illustrator.getLogo()
+
+    def getLogo(): #Can be improved by getting the image from odoo
+        return Image.open(path.join(resources,"abilium.bmp"))
+
+    def initialScreen(self):
+        epd.init()
+        Himage = self.logo
+        draw = ImageDraw.Draw(Himage)
+        draw.text((epd.height/2-90, epd.width/2-70), 'Bitte Karte einführen.', font = self.font, fill = 0)
+        now = datetime.now() 
+        dt_string = now.strftime("%d/%m/%Y %H:%M")
+        draw.text((epd.height/2-68, epd.width/2+55), dt_string, font = self.font, fill = 0)
+        epd.display(epd.getbuffer(Himage))
+        epd.sleep()
+    
+    def checkInOutScreen(self, employeeName : str, employeeHours : str, checkInScreen : bool):
+        epd.init()
+        Himage = Image.new('1', (epd.height, epd.width), 255)
+        draw = ImageDraw.Draw(Himage)
+        if checkInScreen:
+            draw.text((epd.height/2-70, epd.width/2-15), 'Hallo ' + employeeName, font = self.font, fill = 0)
+        else:
+            draw.text((epd.height/2-70, epd.width/2-15), 'Tschüss ' + employeeName, font = self.font, fill = 0)
+        draw.text((epd.height/2-100, epd.width/2+5), 'Arbeitsstunden:' + employeeHours, font = self.font, fill = 0)
+        epd.display(epd.getbuffer(Himage))
+    
+    def unknownScreen(self):
+        epd.init()
+        Himage = Image.new('1', (epd.height, epd.width), 255)
+        draw = ImageDraw.Draw(Himage)
+        draw.text((epd.height/2-70, epd.width/2-15), 'Wie bitte?' , font = self.font, fill = 0)
+        epd.display(epd.getbuffer(Himage))
