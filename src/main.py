@@ -44,11 +44,11 @@ try:
 
         if employee.isCheckedOut and not keyPressed:
             odoo_handler.check_in(employee)
-            illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)), True)
+            illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', True)
             
         if not employee.isCheckedOut and not keyPressed:
             odoo_handler.check_out(employee)
-            illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)), False)
+            illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', False)
 
     except ValueError:
         illustrator.unknownScreen()
