@@ -14,8 +14,21 @@ class Illustrator():
     def __init__(self) -> None:
         self.font = ImageFont.truetype(path.join(resources,"Font.ttc"), 18) 
         self.logo = Illustrator.getLogo()
-        self.ip =  ni.ifaddresses('eth0')[ni.AF_INET][0]['addr']
+        self.ip = self.get_ips()
 
+    @staticmethod
+    def get_ips():
+
+        interfaces = ni.interfaces()
+        interfaces.remove('lo')
+
+        for interface in interfaces:
+            addrs = ni.ifaddresses(interface)
+            if ni.AF_INET in addrs.keys() and 'addr' in addrs[ni.AF_INET][0]:
+                return addrs[ni.AF_INET][0]['addr']
+        raise Exception("no internet") # honestly, if this happens you have bigger problems
+
+    @staticmethod
     def getLogo(): #Can be improved by getting the image from odoo
         return Image.open(path.join(resources,"abilium.bmp"))
 
