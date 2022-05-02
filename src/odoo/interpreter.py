@@ -63,10 +63,12 @@ class Interpreter():
         except IndexError:
             raise ValueError("Bad Badge-id")
 
+        last_attendance = None if not found_employee['last_attendance_id'] else found_employee['last_attendance_id'][0]
+            
         return Employee(id= found_employee['id'],
                         name= found_employee['name'],
                         isCheckedOut= ( found_employee['attendance_state'] == 'checked_out'),
-                        last_attendance_id= found_employee['last_attendance_id'][0],
+                        last_attendance_id= last_attendance,
                         hours_today= found_employee['hours_today'],
                         hours_this_month= self.monthly_hours(found_employee['attendance_ids'])
                         )
