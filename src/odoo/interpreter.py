@@ -1,7 +1,7 @@
 import xmlrpc.client
 from .employee import Employee
 from typing import Any 
-from datetime import datetime
+from datetime import datetime, timedelta
 from os import environ
 
 class Interpreter():
@@ -57,6 +57,7 @@ class Interpreter():
                                                 ,'attendance_ids'
                                                 ,'last_attendance_id'
                                                 ,'hours_today'
+                                                ,'last_check_in'
                                               ]
                                             }
                                           )[0]
@@ -69,6 +70,7 @@ class Interpreter():
                         name= found_employee['name'],
                         isCheckedOut= ( found_employee['attendance_state'] == 'checked_out'),
                         last_attendance_id= last_attendance,
+                        last_check_in= found_employee['last_check_in'],
                         hours_today= found_employee['hours_today'],
                         hours_this_month= self.monthly_hours(found_employee['attendance_ids'])
                         )
@@ -83,4 +85,5 @@ class Interpreter():
                      [employee.last_attendance_id, {'check_out': str(self.time())}] )
         except xmlrpc.client.Fault:
             pass
+        employee.update_hours()
     
