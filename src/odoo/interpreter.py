@@ -1,4 +1,6 @@
+from tkinter import Image
 import xmlrpc.client
+import json
 from .employee import Employee
 from typing import Any 
 from datetime import datetime
@@ -84,3 +86,39 @@ class Interpreter():
         except xmlrpc.client.Fault:
             pass
     
+    def getLogoTest(self) -> None:
+        unformated = self.execute('res.partner', 'search_read', [[
+                                        ['is_company', '=', True],
+                                        ['id', '=', 1]
+                                   ]],
+                                   {    'fields':['image_512']
+                                   }
+                                   )
+        #result = json.dumps(unformated,indent = 4)
+        result = json.dumps(unformated)
+        #r = json.load(unformated)
+        f = open("outputLogo.json", "w")
+        f.write(result)
+        f.close()
+        #print(result)
+        print(f'result[0] {result[0]}')
+        print(f'result[1] {result[1]}')
+        print(f'result[2] {result[2]}')
+        print(f'result[3] {result[3]}')
+        print(f'result[4] {result[4]}')
+        #print(f'result["id"] {result["id"]}')
+        #print(result['id'])
+        print(f'result[0][0] {result[0][0]}')
+        unf = list(result.split(":"))
+        a = "a!b@c#d$"
+        b = "\"}]"
+        unf2 = unf[2]
+        for char in b:
+            unf2 = unf2.replace(char, "")
+
+        print(unf2)
+        #print(f'r: {r["image_512"]}')
+        #print(f'result[0][1] {result[0][1]}')
+        #print(f'result[1]["id"] {result[1]["id"]}')
+        print("Test successful")
+        
