@@ -4,7 +4,12 @@ import json
 from .employee import Employee
 from typing import Any 
 from datetime import datetime
-from os import environ
+from os import environ, path
+import base64
+from PIL import Image
+import cv2
+
+resources = path.join(path.dirname(__file__), "..", "resources")
 
 class Interpreter():
     employeeModule= "hr.employee"
@@ -92,33 +97,31 @@ class Interpreter():
                                         ['id', '=', 1]
                                    ]],
                                    {    'fields':['image_512']
-                                   }
-                                   )
-        #result = json.dumps(unformated,indent = 4)
+                                   })
         result = json.dumps(unformated)
-        #r = json.load(unformated)
-        f = open("outputLogo.json", "w")
+        f = open(path.join(resources,"outputLogo.json"), "w")
         f.write(result)
         f.close()
-        #print(result)
-        print(f'result[0] {result[0]}')
-        print(f'result[1] {result[1]}')
-        print(f'result[2] {result[2]}')
-        print(f'result[3] {result[3]}')
-        print(f'result[4] {result[4]}')
-        #print(f'result["id"] {result["id"]}')
-        #print(result['id'])
-        print(f'result[0][0] {result[0][0]}')
-        unf = list(result.split(":"))
-        a = "a!b@c#d$"
-        b = "\"}]"
-        unf2 = unf[2]
+        unf = list(result.split(":"))   #split output 
+        b = "\"}]"  #characters to delete
+        unf2 = unf[2]   #data with image string
         for char in b:
             unf2 = unf2.replace(char, "")
+        unf3 = unf2[1:]
+        #imgdata = b'{unf3}'    #doesnt work
+        imgdata2 = unf3.encode('utf-8')
+        with open(path.join(resources,"companyLogo.png"), "wb") as fh:
+            fh.write(base64.b64decode(imgdata2))
+        self.convertToBW()
+        self.resizeImage()
 
-        print(unf2)
-        #print(f'r: {r["image_512"]}')
-        #print(f'result[0][1] {result[0][1]}')
-        #print(f'result[1]["id"] {result[1]["id"]}')
-        print("Test successful")
-        
+    def convertToBW(self) -> None:
+        originalImage = cv2.imread(path.join(resources,"companyLogo.png"))
+        grayImage = cv2.cvtColor(originalImage, cv2.COLOR_BGR2GRAY)
+        (thresh, blackAndWhiteImage) = cv2.threshold(grayImage, 127, 255, cv2.THRESH_BINARY)
+        cv2.imwrite(path.join(resources,"BWcompanyLogo.png"), blackAndWhiteImage)
+
+    def resizeImage(self) -> None:
+        originalImage = cv2.imread(path.join(resources,"BWcompanyLogo.png"))
+        resized = cv2.resize(originalImage, (264,176))
+        cv2.imwrite(path.join(resources,"resizedCompanyLogo.png"), resized)
