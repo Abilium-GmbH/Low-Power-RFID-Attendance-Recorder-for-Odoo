@@ -30,7 +30,7 @@ class Illustrator():
 
     @staticmethod
     def getLogo(): #Can be improved by getting the image from odoo
-        return Image.open(path.join(resources,"abilium.bmp"))
+        return Image.open(path.join(resources,"resizedCompanyLogo.bmp"))
 
     def initialScreen(self):
         epd.init()

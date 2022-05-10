@@ -124,4 +124,4 @@ class Interpreter():
     def resizeImage(self) -> None:
         originalImage = cv2.imread(path.join(resources,"BWcompanyLogo.png"))
         resized = cv2.resize(originalImage, (264,176))
-        cv2.imwrite(path.join(resources,"resizedCompanyLogo.png"), resized)
+        cv2.imwrite(path.join(resources,"resizedCompanyLogo.bmp"), resized)
