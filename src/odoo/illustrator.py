@@ -34,9 +34,11 @@ class Illustrator():
 
     def initialScreen(self):
         epd.init()
-        Himage = self.logo
+        #Himage = self.logo
+        Himage = Image.open(path.join(resources,"abilium.bmp"))
+        #Himage = Image.new('1', (epd.height, epd.width), 255)
         draw = ImageDraw.Draw(Himage)
-        draw.text((epd.height/2-100, epd.width/2-70), 'Bitte Karte einführen.', font = self.font, fill = 0)
+        draw.text((epd.height/2-80, epd.width/2-70), 'Bitte Karte einführen.', font = self.font, fill = 0)
         now = datetime.now() 
         dt_string = now.strftime("%d/%m/%Y %H:%M")
         draw.text((epd.height/2-68, epd.width/2+55), dt_string, font = self.font, fill = 0)
