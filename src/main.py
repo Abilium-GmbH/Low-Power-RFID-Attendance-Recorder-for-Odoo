@@ -21,9 +21,9 @@ keyPressed = False
 epd = epd2in7.EPD()
 
 try:
-  illustrator = Illustrator()
   tempInterpreter = Interpreter()
   tempInterpreter.getLogoTest()
+  illustrator = Illustrator()
   while(True):
     illustrator.initialScreen()
     keyPressed = False
