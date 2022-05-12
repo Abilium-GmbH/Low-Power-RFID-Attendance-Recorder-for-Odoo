@@ -1,3 +1,4 @@
+import time
 from xmlrpc.client import boolean
 from lib.waveshare_epd import epd2in7
 from PIL import Image,ImageDraw,ImageFont
@@ -29,7 +30,10 @@ class Illustrator():
         draw.text((epd.height/2-68, epd.width/2+55), dt_string, font = self.font, fill = 0)
         epd.display(epd.getbuffer(Himage))
         epd.sleep()
-    
+        print("sleeped")
+
+
+
     def checkInOutScreen(self, employeeName : str, employeeHours : str, checkInScreen : bool):
         epd.init()
         Himage = Image.new('1', (epd.height, epd.width), 255)
