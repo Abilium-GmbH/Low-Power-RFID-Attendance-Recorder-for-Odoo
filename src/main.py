@@ -22,7 +22,7 @@ epd = epd2in7.EPD()
 
 try:
   tempInterpreter = Interpreter()
-  tempInterpreter.getLogoTest()
+  tempInterpreter.getLogo()
   illustrator = Illustrator()
   while(True):
     illustrator.initialScreen()

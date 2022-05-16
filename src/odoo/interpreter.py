@@ -91,7 +91,7 @@ class Interpreter():
         except xmlrpc.client.Fault:
             pass
     
-    def getLogoTest(self) -> None:
+    def getLogo(self) -> None:
         unformated = self.execute('res.partner', 'search_read', [[
                                         ['is_company', '=', True],
                                         ['id', '=', 1]
