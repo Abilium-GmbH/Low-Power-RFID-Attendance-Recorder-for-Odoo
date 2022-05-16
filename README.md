@@ -44,6 +44,54 @@ sudo pip3 install gpiozero netifaces spidev rpi.gpio pillow
 sudo pip3 install mfrc522
 ```
 
+## Connect with Odoo
+There are two ways to connect the project with the odoo server:
+
+1. Enter the directory for enviroment variables
+```console
+sudo nano etc/environment
+```
+2. Add the following lines with the information of the relevant odoo server. This is possible with API keys or hardcoded letters
+```console
+ODOO_URL="YOUR-URL"
+ODOO_USERNAME="YOUR-USERNAME"
+ODOO_DB="DATABASE_NAME"
+ODOO_PASSWORD="YOUR_PASSWORD"
+```
+3. Save the file and test with the commands below
+```console
+echo $ODOO_URL
+echo $ODOO_USERNAME
+echo $ODOO_DB
+echo $ODOO_PASSWORD
+```
+
+The second variant works by hardcoding the information into the responsible file
+
+1. Run the following commands
+```console
+cd Low-Power-RFID-Attendance-Recorder-for-Odoo/src/odoo
+sudo nano interpreter.py
+```
+2. Write the information from the server into the init method instead of the enviroment variables. They are marked with the comments.
+```python
+    def __init__(self) -> None:
+        url = environ['ODOO_URL'] #"YOUR-URL"
+        user = environ['ODOO_USERNAME'] #"YOUR-USERNAME"
+        self.db = environ['ODOO_DB'] #"DATABASE_NAME"
+        self.password = environ['ODOO_PASSWORD'] #"YOUR_PASSWORD"
+        self.common = xmlrpc.client.ServerProxy(
+            '{}/xmlrpc/2/common'.format(url), allow_none=True)
+        self.uid = self.common.authenticate(self.db, user, self.password, {})
+        self.models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url),
+                                                allow_none=True) 
+```
+3. Save the file and quit it
+
+FOR BOTH VARIANTS IMPORTANT!
+
+Save the number of the card of an employee into odoo as the Badge ID
+
 ## Test Hardware
 1. Run commands
 ```console
@@ -51,6 +99,13 @@ cd Low-Power-RFID-Attendance-Recorder-for-Odoo/src
 python testHardware.py
 ```
 2. Follow the instructions written on the display to see if the hardware works
+
+## How to use the attendance recorder
+1. Hold the Badge or Token near to the scanner to Check-In or to Check-Out. Just to state the obvious: If an employee is Checked-Out this will Check the employee In and vice versa. It is still possible to manually Check-In or Out by connecting to odoo.
+
+2. Holding a Badge or Token near the RFID-Reader while pressing one of the four buttons will lead to the following results. They are labeled from top to bottom.
+    1. By pressing the first button one can see whether an employee is Checked-In or Out
+    2. By pressing the second button one can see the IP-Address of the device.
 
 ## References
 - WaveShare 2.7Inch e-Paper Display Wiki https://www.waveshare.com/wiki/2.7inch_e-Paper_HAT_(B)
