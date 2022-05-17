@@ -29,8 +29,9 @@ class Illustrator():
         raise Exception("no internet") # honestly, if this happens you have bigger problems
 
     @staticmethod
+    #getLogo from Interpreter should be called first
     def getLogo(): #Can be improved by getting the image from odoo
-        return Image.open(path.join(resources,"abilium.bmp"))
+        return Image.open(path.join(resources,"resizedCompanyLogo.bmp"))
 
     def initialScreen(self):
         epd.init()

@@ -46,6 +46,9 @@ try:
   illustrator.initialScreen()
   now = datetime.now()
   oldmin = int(now.strftime("%M"))
+  odoo_handler = Interpreter()
+  odoo_handler.getLogo()
+  
   while(True):
     # wait for a nfc token from an employee
     reader = SimpleMFRC522()

@@ -1,8 +1,15 @@
+from tkinter import Image
 import xmlrpc.client
+import json
 from .employee import Employee
 from typing import Any 
-from datetime import datetime, timedelta
-from os import environ
+from datetime import datetime
+from os import environ, path
+import base64
+from PIL import Image
+import cv2
+
+resources = path.join(path.dirname(__file__), "..", "resources")
 
 class Interpreter():
     employeeModule= "hr.employee"
@@ -87,3 +94,37 @@ class Interpreter():
             pass
         employee.update_hours()
     
+    def getLogo(self) -> None:
+        unformated = self.execute('res.partner', 'search_read', [[
+                                        ['is_company', '=', True],
+                                        ['id', '=', 1]
+                                   ]],
+                                   {    'fields':['image_512']
+                                   })
+        result = json.dumps(unformated)
+        f = open(path.join(resources,"outputLogo.json"), "w")
+        f.write(result)
+        f.close()
+        unf = list(result.split(":"))   #split output 
+        b = "\"}]"  #characters to delete
+        unf2 = unf[2]   #data with image string
+        for char in b:
+            unf2 = unf2.replace(char, "")
+        unf3 = unf2[1:]
+        #imgdata = b'{unf3}'    #doesnt work
+        imgdata2 = unf3.encode('utf-8')
+        with open(path.join(resources,"companyLogo.png"), "wb") as fh:
+            fh.write(base64.b64decode(imgdata2))
+        self.convertToBW()
+        self.resizeImage()
+
+    def convertToBW(self) -> None:
+        originalImage = cv2.imread(path.join(resources,"companyLogo.png"))
+        grayImage = cv2.cvtColor(originalImage, cv2.COLOR_BGR2GRAY)
+        (thresh, blackAndWhiteImage) = cv2.threshold(grayImage, 127, 255, cv2.THRESH_BINARY)
+        cv2.imwrite(path.join(resources,"BWcompanyLogo.png"), blackAndWhiteImage)
+
+    def resizeImage(self) -> None:
+        originalImage = cv2.imread(path.join(resources,"BWcompanyLogo.png"))
+        resized = cv2.resize(originalImage, (264,176))
+        cv2.imwrite(path.join(resources,"resizedCompanyLogo.bmp"), resized)
