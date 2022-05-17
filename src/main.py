@@ -22,6 +22,9 @@ epd = epd2in7.EPD()
 
 try:
   illustrator = Illustrator()
+  odoo_handler = Interpreter()
+  odoo_handler.getLogo()
+  
   while(True):
     illustrator.initialScreen()
     keyPressed = False
@@ -30,7 +33,6 @@ try:
     reader = SimpleMFRC522()
     id, text = reader.read()
 
-    odoo_handler = Interpreter()
     try:
         employee = odoo_handler.getEmployee(id)
         if key1.is_pressed:
