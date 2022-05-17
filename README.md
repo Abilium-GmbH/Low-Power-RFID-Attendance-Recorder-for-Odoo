@@ -171,3 +171,4 @@ python rfid_read.py
 - MFRC522 datasheet https://www.nxp.com/docs/en/data-sheet/MFRC522.pdf
 - Raspberry PI 4 Pinout https://maker.pro/storage/g9KLAxU/g9KLAxUiJb9e4Zp1xcxrMhbCDyc3QWPdSunYAoew.png
 - RFC522 Board Tutorial https://pimylifeup.com/raspberry-pi-rfid-rc522/
+- Getting Started with e-Paper Display https://dev.to/ranewallin/getting-started-with-the-waveshare-2-7-epaper-hat-on-raspberry-pi-41m8
