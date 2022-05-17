@@ -43,11 +43,12 @@ GPIO.add_event_detect(BUTTON2_GPIO, GPIO.FALLING,callback=button2_pressed_callba
 
 try:
   illustrator = Illustrator()
-  illustrator.initialScreen()
-  now = datetime.now()
-  oldmin = int(now.strftime("%M"))
   odoo_handler = Interpreter()
   odoo_handler.getLogo()
+  illustrator.initialScreen()
+
+  now = datetime.now()
+  oldmin = int(now.strftime("%M"))
   
   while(True):
     # wait for a nfc token from an employee

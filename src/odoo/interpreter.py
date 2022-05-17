@@ -1,4 +1,3 @@
-from tkinter import Image
 import xmlrpc.client
 import json
 from .employee import Employee
@@ -6,7 +5,6 @@ from typing import Any
 from datetime import datetime
 from os import environ, path
 import base64
-from PIL import Image
 import cv2
 
 resources = path.join(path.dirname(__file__), "..", "resources")
