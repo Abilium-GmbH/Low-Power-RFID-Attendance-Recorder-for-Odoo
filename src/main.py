@@ -42,9 +42,9 @@ GPIO.add_event_detect(BUTTON1_GPIO, GPIO.FALLING,callback=button1_pressed_callba
 GPIO.add_event_detect(BUTTON2_GPIO, GPIO.FALLING,callback=button2_pressed_callback, bouncetime=100)
 
 try:
-  illustrator = Illustrator()
   odoo_handler = Interpreter()
   odoo_handler.getLogo()
+  illustrator = Illustrator()
   illustrator.initialScreen()
 
   now = datetime.now()
