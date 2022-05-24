@@ -70,15 +70,15 @@ try:
               if not employee.isCheckedOut:
                   illustrator.isCheckedInOutScreen(employee.name, False)
 
-          if employee.isCheckedOut and not key1Pressed:
+          if employee.isCheckedOut and not key1Pressed and not key2Pressed:
               odoo_handler.check_in(employee)
-              #illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', True)
-              illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', False)
-
-          if not employee.isCheckedOut and not key1Pressed:
-              odoo_handler.check_out(employee)
-              #illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', False)
               illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', True)
+              #illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', False)
+
+          if not employee.isCheckedOut and not key1Pressed and not key2Pressed:
+              odoo_handler.check_out(employee)
+              illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', False)
+              #illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', True)
 
       except ValueError:
             illustrator.unknownScreen()
