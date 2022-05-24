@@ -59,7 +59,7 @@ try:
        id = reader.read_id_no_block()
     #reader.READER.MFRC522_Reset()
     if id:
-      odoo_handler = Interpreter()
+      
       try:
           employee = odoo_handler.getEmployee(id)
           if key1Pressed: #key1.is_pressed:

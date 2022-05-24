@@ -36,16 +36,18 @@ class Illustrator():
 
     def initialScreen(self):
         epd.init()
-        Himage = self.logo
+        Himage = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame
         draw = ImageDraw.Draw(Himage)
+        bmp = Image.open(path.join(resources,"resizedCompanyLogo.bmp"))
+        Himage.paste(bmp, (0,0))
         draw.text((epd.height/2-100, epd.width/2-70), 'Bitte Karte einführen.', font = self.font, fill = 0)
         now = datetime.now() 
         dt_string = now.strftime("%d/%m/%Y %H:%M")
         draw.text((epd.height/2-68, epd.width/2+55), dt_string, font = self.font, fill = 0)
         epd.display(epd.getbuffer(Himage))
+        bmp.close()
         epd.sleep()
         print("sleeped")
-
 
 
     def checkInOutScreen(self, employeeName : str, employeeHours : str, checkInScreen : bool):
