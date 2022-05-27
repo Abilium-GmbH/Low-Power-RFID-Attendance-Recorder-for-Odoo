@@ -6,15 +6,14 @@ import time
 from PIL import Image,ImageDraw,ImageFont
 from datetime import datetime
 from datetime import timedelta
-from odoo.integrationIllustrator import Illustrator
+from odoo.integrationIllustrator import integrationIllustrator
 from os import path
 from gpiozero import Button  # import the Button control from gpiozero
 import RPi.GPIO as GPIO
 import signal
 import sys
 
-
-resources = path.join(path.dirname(__file__), "", "resources")
+resources = path.join(path.dirname(__file__), "resources")
 epd = epd2in7.EPD()
 
 BUTTON1_GPIO = 5
@@ -62,17 +61,19 @@ GPIO.add_event_detect(BUTTON3_GPIO, GPIO.FALLING,callback=button3_pressed_callba
 GPIO.add_event_detect(BUTTON4_GPIO, GPIO.FALLING,callback=button4_pressed_callback, bouncetime=100)
 
 try:
-  illustrator = Illustrator()
-
+  illustrator = integrationIllustrator()
 
   # Here we check, if the e-Ink-Display works
   illustrator.eInkOk()
 
   # Here we check, if the rfid-Reader works
-  #illustrator.rfidCheck()
-  #reader = SimpleMFRC522()
-  #id, text = reader.read()
-  #illustrator.rfidOk()
+  illustrator.rfidCheck()
+  reader = SimpleMFRC522()
+  id, text = reader.read()
+
+  # No check needed
+  illustrator.rfidOk()
+
 
   # Here we check, if the four buttons work
   illustrator.button1Check()

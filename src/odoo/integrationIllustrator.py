@@ -10,7 +10,7 @@ resources = path.join(path.dirname(__file__), "..", "resources")
 epd = epd2in7.EPD()
 
 
-class Illustrator():
+class integrationIllustrator():
 
     def __init__(self) -> None:
         self.font = ImageFont.truetype(path.join(resources, "Font.ttc"), 18)
@@ -30,7 +30,7 @@ class Illustrator():
         draw = ImageDraw.Draw(Himage)
         draw.text((epd.height / 2 - 100, epd.width / 2 - 70), 'Scanne eine Karte/Badge.', font=self.font, fill=0)
         epd.display(epd.getbuffer(Himage))
-        time.sleep(2)
+        epd.sleep()
         print("sleeped")
 
     def button1Check(self):
