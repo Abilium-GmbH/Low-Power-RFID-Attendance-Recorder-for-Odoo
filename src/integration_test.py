@@ -2,16 +2,9 @@
 # -*- coding:utf-8 -*-
 from lib.simplemfrc import SimpleMFRC522
 from lib.waveshare_epd import epd2in7
-import time
-from PIL import Image,ImageDraw,ImageFont
-from datetime import datetime
-from datetime import timedelta
 from odoo.integrationIllustrator import integrationIllustrator
 from os import path
-from gpiozero import Button  # import the Button control from gpiozero
 import RPi.GPIO as GPIO
-import signal
-import sys
 
 resources = path.join(path.dirname(__file__), "resources")
 epd = epd2in7.EPD()
@@ -63,7 +56,7 @@ GPIO.add_event_detect(BUTTON4_GPIO, GPIO.FALLING,callback=button4_pressed_callba
 try:
   illustrator = integrationIllustrator()
 
-  # Here we check, if the e-Ink-Display works
+  # Display, that eInk works.
   illustrator.eInkOk()
 
   # Here we check, if the rfid-Reader works
@@ -71,11 +64,11 @@ try:
   reader = SimpleMFRC522()
   id, text = reader.read()
 
-  # No check needed
+  # Display, that rfId works.
   illustrator.rfidOk()
 
 
-  # Here we check, if the four buttons work
+  # Here we check, if the four buttons are working.
   illustrator.button1Check()
   if key1Pressed:
     illustrator.button1Ok()
@@ -92,7 +85,7 @@ try:
   if key4Pressed:
      illustrator.button4Ok()
 
-  # After all checks passed, the hardware is working as intended
+  # After all checks passed, we give a feedback.
   if not key1Pressed or not key2Pressed or not key3Pressed or not key4Pressed:
       if not key1Pressed:
          illustrator.button1Defect()
@@ -104,8 +97,6 @@ try:
          illustrator.button4Defect()
   else:
       illustrator.hardwareOk()
-
-
 
 except KeyboardInterrupt:
     exit()

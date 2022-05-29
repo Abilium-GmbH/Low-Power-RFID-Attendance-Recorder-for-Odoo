@@ -1,20 +1,15 @@
 import time
-from xmlrpc.client import boolean
 from lib.waveshare_epd import epd2in7
 from PIL import Image, ImageDraw, ImageFont
 from os import path
 
-
 resources = path.join(path.dirname(__file__), "..", "resources")
-
 epd = epd2in7.EPD()
-
 
 class integrationIllustrator():
 
     def __init__(self) -> None:
         self.font = ImageFont.truetype(path.join(resources, "Font.ttc"), 18)
-
 
     def eInkOk(self):
         epd.init()
