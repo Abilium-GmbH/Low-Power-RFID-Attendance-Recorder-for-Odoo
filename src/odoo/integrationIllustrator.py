@@ -7,7 +7,10 @@ resources = path.join(path.dirname(__file__), "..", "resources")
 epd = epd2in7.EPD()
 
 class integrationIllustrator():
-
+    """
+    This class is used to draw the results of the integration test on the E-Ink-Display. 
+    These methods write on the display what they say they will write.
+    """
     def __init__(self) -> None:
         self.font = ImageFont.truetype(path.join(resources, "Font.ttc"), 18)
 

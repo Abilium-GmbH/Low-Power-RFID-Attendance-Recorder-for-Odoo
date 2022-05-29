@@ -16,6 +16,7 @@ import sys
 
 resources = path.join(path.dirname(__file__),"resources")
 
+# enable Buttons
 BUTTON1_GPIO = 5
 BUTTON2_GPIO = 6
 
@@ -78,20 +79,18 @@ try:
           employee = odoo_handler.getEmployee(id)
           if key1Pressed:
               if employee.isCheckedOut:
-                  illustrator.isCheckedInOutScreen(employee.name, True)
+                  illustrator.isCheckedInOutScreen(employee.name, False)
 
               if not employee.isCheckedOut:
-                  illustrator.isCheckedInOutScreen(employee.name, False)
+                  illustrator.isCheckedInOutScreen(employee.name, True)
 
           if employee.isCheckedOut and not key1Pressed:
               odoo_handler.check_in(employee)
               illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', True)
-              #illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', False)
 
           if not employee.isCheckedOut and not key1Pressed:
               odoo_handler.check_out(employee)
               illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', False)
-              #illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', True)
 
       except ValueError:
             illustrator.unknownScreen()
