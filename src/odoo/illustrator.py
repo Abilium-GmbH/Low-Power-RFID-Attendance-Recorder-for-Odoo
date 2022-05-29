@@ -23,7 +23,7 @@ class Illustrator():
     @staticmethod
     def get_ips():
         """
-        Searches the networkinterface for the ip address of the device and returns it
+        Searches the networkinterface for the ip address of the device and returns the first one it finds
         """
         interfaces = ni.interfaces()
         interfaces.remove('lo')

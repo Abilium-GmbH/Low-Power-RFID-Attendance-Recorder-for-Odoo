@@ -52,11 +52,11 @@ class Interpreter():
         Sums up the worked hours of an employee in the last month
 
         Args:
-        attendance_ids: A list of different attendance ids a user has created (Every time a user Checks In and Out a new id is created)
+        attendance_ids: A list of attendance ids given by odoo
 
         Returns:
 
-        Sum of all the worked hours given from the attendance_ids
+        Sum of all the worked hours given from the attendance_ids in the current month
         """
         time_query = datetime.now().strftime('%Y-%m-%')
         unprocessed_attendances = self.execute(self.attendanceModule,
@@ -74,7 +74,7 @@ class Interpreter():
         Tries to find out which Employee tried to check in or out with a rfid capable token/badge from the barcode saved on token/badge
 
         Args: 
-        barcode: an int saved on a token/badge
+        barcode: an int saved on a token/badge and stored in Odoo
 
         Returns: 
 
