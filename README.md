@@ -39,9 +39,11 @@ sudo apt-get install python3-pil
 sudo apt-get install python3-numpy
 sudo apt-get install python3-venv
 sudo apt-get install python3-rpi.gpio python-pil python-smbus python-dev libopenjp2-7
+sudo apt-get install libgl1-mesa-glx
 sudo pip3 install RPi.GPIO
 sudo pip3 install gpiozero netifaces spidev rpi.gpio pillow
 sudo pip3 install mfrc522
+sudo pip3 install opencv-python
 ```
 
 ## Connect with Odoo
