@@ -73,7 +73,7 @@ try:
     #power down the RFID antenna
     reader.READER.AntennaOff()
     if id:
-      odoo_handler = Interpreter()
+      #odoo_handler = Interpreter()
       try:
           employee = odoo_handler.getEmployee(id)
           if key1Pressed:
@@ -83,21 +83,25 @@ try:
               if not employee.isCheckedOut:
                   illustrator.isCheckedInOutScreen(employee.name, False)
 
-          if employee.isCheckedOut and not key1Pressed and not key2Pressed:
+          elif key2Pressed and not key1Pressed:
+              illustrator.checkIpAdress()
+
+          elif employee.isCheckedOut and not key1Pressed and not key2Pressed:
               odoo_handler.check_in(employee)
               illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', True)
               #illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', False)
 
-          if not employee.isCheckedOut and not key1Pressed and not key2Pressed:
+          elif not employee.isCheckedOut and not key1Pressed and not key2Pressed:
               odoo_handler.check_out(employee)
               illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', False)
               #illustrator.checkInOutScreen(employee.name, str(timedelta(hours = employee.hours_this_month)).split(':')[0] + 'h  ' + str(timedelta(hours = employee.hours_this_month)).split(':')[1] + 'm', True)
 
+          
+
       except ValueError:
             illustrator.unknownScreen()
 
-      if key2Pressed:
-          illustrator.checkIpAdress()
+      
 
       time.sleep(5)
       illustrator.initialScreen()
