@@ -1,6 +1,6 @@
 import xmlrpc.client
 import json
-from .employee import Employee
+from odoo.employee import Employee
 from typing import Any 
 from datetime import datetime
 from os import environ, path
@@ -91,8 +91,8 @@ class Interpreter():
                                                 ,'attendance_state'
                                                 ,'attendance_ids'
                                                 ,'last_attendance_id'
-                                                ,'hours_today'
                                                 ,'last_check_in'
+                                                ,'hours_today'
                                               ]
                                             }
                                           )[0]
@@ -124,7 +124,7 @@ class Interpreter():
         try:
             self.execute(self.attendanceModule, 'write',
                      [employee.last_attendance_id, {'check_out': str(self.time())}] )
-        except xmlrpc.client.Fault:
+        except xmlrpc.client.Fault as e:
             pass
         employee.update_hours()
     
