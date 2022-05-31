@@ -19,13 +19,7 @@
 
 ## Setup display and RFID
 
-1. Run command
-
-```
-git clone https://github.com/waveshare/e-Paper.git
-```
-
-2. Run the following commands
+1. Run the following commands
 
 ```
 sudo apt-get update
@@ -48,7 +42,7 @@ sudo apt-get install libqtgui4
 sudo apt-get install libqt4-test
 ```
 
-3. Clone our project
+2. Clone our project
 
 ```
 git clone https://github.com/Abilium-GmbH/Low-Power-RFID-Attendance-Recorder-for-Odoo.git
