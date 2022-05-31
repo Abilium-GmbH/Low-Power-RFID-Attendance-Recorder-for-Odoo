@@ -102,16 +102,16 @@ try:
             illustrator.unknownScreen()
 
       
-
+      keypresstimestamp = 0
+      key1Pressed = False
+      key2Pressed = False
       time.sleep(5)
       illustrator.initialScreen()
       #update minute change detector if a login/out already refreshed the clock on home
       now = datetime.now()
       newmin = int(now.strftime("%M"))
       oldmin = newmin
-      keypresstimestamp = 0
-      key1Pressed = False
-      key2Pressed = False
+      
 
     else:
       #minute change detector to refresh screen on minute change
