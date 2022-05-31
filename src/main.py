@@ -4,15 +4,11 @@ import RPi.GPIO as GPIO
 from lib.simplemfrc import SimpleMFRC522
 from lib.waveshare_epd import epd2in7
 import time
-from PIL import Image,ImageDraw,ImageFont
 from datetime import datetime
 from datetime import timedelta
 from odoo.interpreter import Interpreter
 from odoo.illustrator import Illustrator
 from os import path
-from gpiozero import Button  # import the Button control from gpiozero
-import signal
-import sys
 
 resources = path.join(path.dirname(__file__),"resources")
 

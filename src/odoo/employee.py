@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import datetime
 
 @dataclass() #like this we don't need a constructor
 class Employee():

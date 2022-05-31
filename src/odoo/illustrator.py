@@ -1,5 +1,3 @@
-import time
-from xmlrpc.client import boolean
 from lib.waveshare_epd import epd2in7
 from PIL import Image,ImageDraw,ImageFont
 from os import path
